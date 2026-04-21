@@ -1,0 +1,48 @@
+---
+import { site } from '../data/site';
+
+const addressLine = `${site.address.street}, ${site.address.locality}, ${site.address.region} ${site.address.postalCode}`;
+---
+<section class="visit" id="visit">
+  <div class="visit__inner">
+    <p class="section__eyebrow">Come see us</p>
+    <h2 class="section__title">Visit.</h2>
+
+    <div class="visit__grid">
+      <div class="visit__card">
+        <h3 class="visit__card-title">Hours</h3>
+        <dl class="hours">
+          {site.hours.map((h) => (
+            <div class="hours__row">
+              <dt>{h.label}</dt>
+              <dd>{h.time}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <div class="visit__card">
+        <h3 class="visit__card-title">Location</h3>
+        <address class="visit__address">
+          <a href={site.mapsUrl} target="_blank" rel="noopener">
+            {site.address.street}<br />
+            {site.address.locality}, {site.address.region} {site.address.postalCode}
+          </a>
+        </address>
+        <a class="btn btn--ghost btn--small" href={site.mapsUrl} target="_blank" rel="noopener">
+          Open in Maps &rarr;
+        </a>
+      </div>
+
+      <div class="visit__card">
+        <h3 class="visit__card-title">Contact</h3>
+        <p>
+          <a href={`tel:${site.phone.tel}`} class="visit__phone">{site.phone.display}</a>
+        </p>
+        <p>
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

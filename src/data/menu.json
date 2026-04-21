@@ -1,0 +1,37 @@
+{
+  "note": "Placeholder menu — replace items with real Club de Noyer offerings.",
+  "sections": [
+    {
+      "id": "pizzas",
+      "title": "Pizzas",
+      "blurb": "Hand-tossed, wood-fired, made to order.",
+      "items": [
+        { "name": "Margherita", "description": "San Marzano tomato, fresh mozzarella, basil, olive oil.", "price": "16" },
+        { "name": "Pepperoni", "description": "Classic pepperoni, mozzarella, tomato sauce.", "price": "17" },
+        { "name": "Northwoods", "description": "Italian sausage, caramelized onion, wild mushroom, fontina.", "price": "19" },
+        { "name": "White Garlic", "description": "Roasted garlic cream, mozzarella, ricotta, rosemary.", "price": "18" },
+        { "name": "Quattro Formaggi", "description": "Mozzarella, gorgonzola, parmesan, fontina.", "price": "19" }
+      ]
+    },
+    {
+      "id": "starters",
+      "title": "Starters",
+      "items": [
+        { "name": "Garlic Knots", "description": "House-made, brushed with garlic butter, served with marinara.", "price": "8" },
+        { "name": "Caesar Salad", "description": "Romaine, parmesan, anchovy, garlic croutons.", "price": "11" },
+        { "name": "Burrata", "description": "Creamy burrata, heirloom tomato, basil, balsamic, grilled bread.", "price": "14" }
+      ]
+    },
+    {
+      "id": "drinks",
+      "title": "Bar",
+      "blurb": "Local taps, classic cocktails, Italian wines by the glass.",
+      "items": [
+        { "name": "Draft Beer", "description": "Rotating Wisconsin taps — ask your server.", "price": "6" },
+        { "name": "House Red / White", "description": "Italian table wine by the glass.", "price": "9" },
+        { "name": "Old Fashioned", "description": "Wisconsin-style, brandy, muddled cherry + orange.", "price": "11" },
+        { "name": "Negroni", "description": "Gin, Campari, sweet vermouth, orange twist.", "price": "12" }
+      ]
+    }
+  ]
+}

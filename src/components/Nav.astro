@@ -1,0 +1,46 @@
+---
+import { site } from '../data/site';
+---
+<header class="nav">
+  <a href="#top" class="nav__brand" aria-label={`${site.name} home`}>
+    <span class="nav__wordmark">Club de Noyer</span>
+  </a>
+
+  <button
+    class="nav__toggle"
+    type="button"
+    aria-controls="primary-nav"
+    aria-expanded="false"
+    data-nav-toggle
+  >
+    <span class="sr-only">Menu</span>
+    <span class="nav__bar" aria-hidden="true"></span>
+    <span class="nav__bar" aria-hidden="true"></span>
+    <span class="nav__bar" aria-hidden="true"></span>
+  </button>
+
+  <nav id="primary-nav" class="nav__links" aria-label="Primary">
+    <a href="#menu">Menu</a>
+    <a href="#visit">Visit</a>
+    <a href="#gallery">Gallery</a>
+    <a href={`tel:${site.phone.tel}`} class="nav__cta">{site.phone.display}</a>
+  </nav>
+</header>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('[data-nav-toggle]');
+  const nav = document.getElementById('primary-nav');
+  btn?.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    nav?.classList.toggle('nav__links--open', !open);
+  });
+
+  // Close mobile nav when a link is tapped
+  nav?.querySelectorAll('a').forEach((a) =>
+    a.addEventListener('click', () => {
+      btn?.setAttribute('aria-expanded', 'false');
+      nav.classList.remove('nav__links--open');
+    }),
+  );
+</script>

@@ -1,0 +1,25 @@
+---
+import { site } from '../data/site';
+---
+<section class="hero" id="top">
+  <div class="hero__backdrop" aria-hidden="true"></div>
+  <div class="hero__scrim" aria-hidden="true"></div>
+
+  <div class="hero__content">
+    <p class="hero__eyebrow">Eagle River · Wisconsin</p>
+    <h1 class="hero__title">
+      <span class="hero__title-line">Club de</span>
+      <span class="hero__title-line">Noyer</span>
+    </h1>
+    <p class="hero__tagline">Wood-fired pizza &amp; a Northwoods bar.</p>
+
+    <div class="hero__actions">
+      <a class="btn btn--primary" href="#menu">See the menu</a>
+      <a class="btn btn--ghost" href={`tel:${site.phone.tel}`}>{site.phone.display}</a>
+    </div>
+  </div>
+
+  <a class="hero__scroll" href="#about" aria-label="Scroll to about section">
+    <span aria-hidden="true">&darr;</span>
+  </a>
+</section>

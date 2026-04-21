@@ -1,0 +1,35 @@
+---
+// TODO: once photos land in src/assets/, import them and replace the
+// placeholder tiles with <Image src={...} alt={...} /> from astro:assets.
+// Example:
+//   import { Image } from 'astro:assets';
+//   import pizza from '../assets/pizza-margherita.jpg';
+//   <Image src={pizza} alt="Margherita pizza" widths={[400, 800, 1200]} sizes="(max-width: 720px) 100vw, 33vw" />
+
+const placeholders = [
+  { label: 'Wood-fired pizza',   tone: 'warm'   },
+  { label: 'The bar',            tone: 'amber'  },
+  { label: 'Dining room',        tone: 'cream'  },
+  { label: 'Fresh dough',        tone: 'olive'  },
+  { label: 'Old Fashioned',      tone: 'rust'   },
+  { label: 'Northwoods evening', tone: 'smoke'  },
+];
+---
+<section class="gallery" id="gallery">
+  <div class="gallery__inner">
+    <p class="section__eyebrow">A look around</p>
+    <h2 class="section__title">The room, the food, the vibe.</h2>
+
+    <div class="gallery__grid">
+      {placeholders.map((p) => (
+        <figure class={`gallery__tile gallery__tile--${p.tone}`}>
+          <figcaption class="gallery__caption">{p.label}</figcaption>
+        </figure>
+      ))}
+    </div>
+
+    <p class="gallery__note">
+      Photos coming soon — drop them into <code>src/assets/</code> and we'll wire them up.
+    </p>
+  </div>
+</section>
