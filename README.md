@@ -1,6 +1,6 @@
-# Club de Noyer
+# Club Denoyer
 
-Website for Club de Noyer — a pizza restaurant and bar in Eagle River, Wisconsin.
+Website for Club Denoyer — a pizza restaurant and bar in Eagle River, Wisconsin.
 Lives at [clubdenoyer.com](https://clubdenoyer.com).
 
 ## Stack

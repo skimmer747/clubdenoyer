@@ -4,7 +4,7 @@ Guidance for Claude Code sessions working in this repo.
 
 ## Project
 
-**Club de Noyer** — public marketing site for a pizza restaurant and bar in
+**Club Denoyer** — public marketing site for a pizza restaurant and bar in
 Eagle River, Wisconsin. Domain: `clubdenoyer.com` (DNS at Hover, email on
 Hover MX). Hosted on GitHub Pages from `main` via the workflow in
 `.github/workflows/deploy.yml`.
