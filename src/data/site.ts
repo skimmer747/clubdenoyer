@@ -6,8 +6,8 @@ export const site = {
   url: 'https://clubdenoyer.com',
   email: 'hello@clubdenoyer.com',
   phone: {
-    display: '(715) 555-0100',
-    tel: '+17155550100',
+    display: '(715) 479-4120',
+    tel: '+17154794120',
   },
   address: {
     street: '123 Main Street',
