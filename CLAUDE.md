@@ -20,8 +20,18 @@ Hover MX). Hosted on GitHub Pages from `main` via the workflow in
 
 - `src/data/site.ts` — single source of truth for name, phone, address, hours, geo.
   Used by `Base.astro` (JSON-LD + meta) and the `Visit`/`Nav`/`Hero`/`Footer` components.
-- `src/data/menu.json` — the menu. Sections with items `{ name, description, price }`.
-  Edit this file to update the menu; the UI re-renders from it on build.
+- `src/data/menu.json` — the menu. Edit to update content; UI re-renders on
+  build. Schema (full types in `MenuSection.astro`):
+  - Section: `{ id, title, eyebrow?, blurb?, priceLabels?, items, footer? }`
+  - Item: `{ name, description?, note?, price? | prices? | tiers? }` —
+    - `price`: single string (leader-dot row).
+    - `prices`: array matching `section.priceLabels` (pizza Sm/Med/Lg, wings,
+      soup cup/bowl).
+    - `tiers`: item-specific `[{ label, price }]` — for the odd Sm/Lg item
+      inside an otherwise single-price section (e.g. Brew City Fries).
+    - `note`: small aside under the name (portion size, sauce, quantity).
+  - `section.footer` renders as an italic note (used for the pizza
+    toppings builder list).
 - `src/layouts/Base.astro` — `<head>`: title, meta description, OpenGraph/Twitter,
   canonical, theme-color, and the `schema.org/Restaurant` JSON-LD block.
 - `src/components/` — presentational components (`Nav`, `Hero`, `About`,
