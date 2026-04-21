@@ -10,7 +10,7 @@ export const site = {
     tel: '+17154794120',
   },
   address: {
-    street: '123 Main Street',
+    street: '5324 WI-70',
     locality: 'Eagle River',
     region: 'WI',
     postalCode: '54521',
@@ -21,7 +21,7 @@ export const site = {
     longitude: -89.2443,
   },
   mapsUrl:
-    'https://www.google.com/maps/search/?api=1&query=Club+de+Noyer+Eagle+River+WI',
+    'https://www.google.com/maps/search/?api=1&query=5324+WI-70%2C+Eagle+River%2C+WI+54521',
   hours: [
     { label: 'Mon – Thu', time: '4:00 – 10:00 PM' },
     { label: 'Fri – Sat', time: '4:00 PM – Midnight' },
