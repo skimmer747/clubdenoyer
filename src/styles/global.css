@@ -276,6 +276,15 @@ section { padding: clamp(4rem, 8vw, 7rem) var(--gutter); }
   margin-top: 2rem;
 }
 .menu-section__header { margin-bottom: 1.25rem; }
+.menu-section__eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin: 0 0 0.3rem;
+}
 .menu-section__title {
   font-size: clamp(1.5rem, 2.8vw, 2rem);
   border-bottom: 2px solid var(--brand-red);
@@ -287,6 +296,14 @@ section { padding: clamp(4rem, 8vw, 7rem) var(--gutter); }
   color: var(--charcoal-soft);
   font-style: italic;
   margin: 0;
+  max-width: 62ch;
+}
+.menu-section__footer {
+  margin-top: 1.25rem;
+  font-size: 0.9rem;
+  color: var(--charcoal-soft);
+  font-style: italic;
+  max-width: 70ch;
 }
 
 .menu-section__items {
@@ -294,6 +311,9 @@ section { padding: clamp(4rem, 8vw, 7rem) var(--gutter); }
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 1.25rem 2.5rem;
+}
+.menu-section__items--tiered {
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
 }
 
 .menu-item { padding: 0.5rem 0; border-bottom: 1px dashed var(--rule); }
@@ -315,8 +335,47 @@ section { padding: clamp(4rem, 8vw, 7rem) var(--gutter); }
   color: var(--brand-red);
   font-weight: 700;
 }
+.menu-item__note {
+  margin: 0.15rem 0 0;
+  font-size: 0.85rem;
+  color: var(--charcoal-soft);
+  letter-spacing: 0.01em;
+}
+.menu-item__tiers {
+  margin: 0.5rem 0 0;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  gap: 0.75rem;
+}
+.menu-item__tier {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.4);
+}
+.menu-item__tier dt {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--charcoal-soft);
+  margin: 0;
+}
+.menu-item__tier dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+  color: var(--brand-red);
+  font-weight: 700;
+  font-size: 1.05rem;
+}
 .menu-item__desc {
-  margin: 0.25rem 0 0;
+  margin: 0.35rem 0 0;
   font-size: 0.95rem;
   color: var(--charcoal-soft);
   max-width: 48ch;

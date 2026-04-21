@@ -1,36 +1,192 @@
 {
-  "note": "Placeholder menu — replace items with real Club Denoyer offerings.",
   "sections": [
     {
-      "id": "pizzas",
-      "title": "Pizzas",
-      "blurb": "Hand-tossed, wood-fired, made to order.",
+      "id": "pizza",
+      "title": "Real Homemade Pizza",
+      "eyebrow": "Thin & crispy crust",
+      "blurb": "The Nagy family has been making homemade pizzas here at Club Denoyer for over 75 years. We make our own dough and roll your pizza when you order it — topped with homemade sauce, freshly grated 100% whole-milk mozzarella, and our own seasoned pork sausage.",
+      "priceLabels": ["Sm 10\"", "Med 12\"", "Lg 14\""],
       "items": [
-        { "name": "Margherita", "description": "San Marzano tomato, fresh mozzarella, basil, olive oil.", "price": "16" },
-        { "name": "Pepperoni", "description": "Classic pepperoni, mozzarella, tomato sauce.", "price": "17" },
-        { "name": "Northwoods", "description": "Italian sausage, caramelized onion, wild mushroom, fontina.", "price": "19" },
-        { "name": "White Garlic", "description": "Roasted garlic cream, mozzarella, ricotta, rosemary.", "price": "18" },
-        { "name": "Quattro Formaggi", "description": "Mozzarella, gorgonzola, parmesan, fontina.", "price": "19" }
+        {
+          "name": "Cheese Pizza",
+          "prices": ["10.00", "14.00", "18.00"]
+        },
+        {
+          "name": "With One Topping",
+          "prices": ["11.00", "15.50", "20.00"]
+        },
+        {
+          "name": "Additional Toppings",
+          "note": "½ or whole pizza, each",
+          "prices": ["0.50", "1.00", "1.50"]
+        },
+        {
+          "name": "Cheesy Garlic Pizza",
+          "description": "Crispy cheese pizza topped with garlic pepper seasoning.",
+          "prices": ["10.00", "14.00", "18.00"]
+        },
+        {
+          "name": "House Special",
+          "description": "Sausage, mushroom, green pepper, onion, black olive.",
+          "prices": ["12.50", "18.50", "24.50"]
+        },
+        {
+          "name": "Veggie Special",
+          "description": "Mushroom, onion, green pepper, tomato, black olive, green olive, jalapeño (optional).",
+          "prices": ["12.50", "18.50", "24.50"]
+        },
+        {
+          "name": "Meaty Special",
+          "description": "Sausage, pepperoni, Canadian bacon, bacon.",
+          "prices": ["12.50", "18.50", "24.50"]
+        },
+        {
+          "name": "Hawaiian Special",
+          "description": "Canadian bacon, pineapple, onion, black olive.",
+          "prices": ["12.50", "18.50", "24.50"]
+        }
+      ],
+      "footer": "Build your own: sausage, pepperoni, chicken, hamburger, onion, tomato, pineapple, spinach, green pepper, black olive, bacon, green olive, mushroom, jalapeño, scrambled egg, sauerkraut, Canadian bacon, peperoncini, extra sauce, extra cheese."
+    },
+    {
+      "id": "appetizers",
+      "title": "Appetizers",
+      "blurb": "One sauce per item; add $0.50 for additional sauces — ranch, blue cheese, BBQ, sweet-n-sour, or honey mustard.",
+      "items": [
+        {
+          "name": "Brew City Fries",
+          "tiers": [
+            { "label": "Sm", "price": "3.00" },
+            { "label": "Lg", "price": "6.50" }
+          ]
+        },
+        {
+          "name": "Garlic Fries",
+          "note": "Large",
+          "price": "7.00"
+        },
+        {
+          "name": "Onion Rings",
+          "note": "with ranch",
+          "tiers": [
+            { "label": "Sm", "price": "3.50" },
+            { "label": "Lg", "price": "8.00" }
+          ]
+        },
+        {
+          "name": "Chicken Tenders",
+          "note": "Qty 4, with your choice of sauce",
+          "price": "9.00"
+        },
+        {
+          "name": "Cheeseburger Bites",
+          "note": "8 oz, with ranch",
+          "price": "9.00"
+        },
+        {
+          "name": "Mini Pork Egg Rolls",
+          "note": "Qty 5, with sweet-n-sour",
+          "price": "9.00"
+        },
+        {
+          "name": "Smoked Gouda Mac-n-Cheese Bites",
+          "note": "8 oz, with ranch",
+          "price": "9.00"
+        },
+        {
+          "name": "Walleye Fingers",
+          "note": "Qty 4, with tartar",
+          "price": "9.00"
+        },
+        {
+          "name": "Cheese Curds",
+          "note": "8 oz, with ranch",
+          "price": "9.00"
+        },
+        {
+          "name": "Pickle Fries",
+          "note": "8 oz, with ranch",
+          "price": "9.00"
+        },
+        {
+          "name": "Breaded Green Beans",
+          "note": "8 oz, with ranch",
+          "price": "9.00"
+        },
+        {
+          "name": "Mozzarella Sticks",
+          "note": "Qty 6, with marinara",
+          "price": "9.00"
+        },
+        {
+          "name": "Cheese Basket",
+          "description": "Mozzarella sticks, gouda bites, cheese curds, and cheeseburger bites.",
+          "price": "12.50"
+        },
+        {
+          "name": "Assortment Basket",
+          "description": "Can't decide? A couple of these, a couple of those — picked from our most-ordered items. Your choice of mild or inferno wings, served with ranch.",
+          "price": "12.50"
+        }
       ]
     },
     {
-      "id": "starters",
-      "title": "Starters",
+      "id": "wings",
+      "title": "Breaded Chicken Wings",
+      "priceLabels": ["Small", "Medium", "Large"],
       "items": [
-        { "name": "Garlic Knots", "description": "House-made, brushed with garlic butter, served with marinara.", "price": "8" },
-        { "name": "Caesar Salad", "description": "Romaine, parmesan, anchovy, garlic croutons.", "price": "11" },
-        { "name": "Burrata", "description": "Creamy burrata, heirloom tomato, basil, balsamic, grilled bread.", "price": "14" }
+        {
+          "name": "Mild",
+          "note": "Qty 8 / 12 / 20",
+          "prices": ["9.00", "12.75", "18.00"]
+        },
+        {
+          "name": "Inferno",
+          "note": "Qty 6 / 10 / 16",
+          "prices": ["9.50", "13.25", "19.00"]
+        },
+        {
+          "name": "Mix ½ Mild / ½ Inferno",
+          "note": "Qty 7 / 11 / 18",
+          "prices": ["9.25", "13.00", "18.50"]
+        }
       ]
     },
     {
-      "id": "drinks",
-      "title": "Bar",
-      "blurb": "Local taps, classic cocktails, Italian wines by the glass.",
+      "id": "garlic-bread",
+      "title": "Garlic Bread",
       "items": [
-        { "name": "Draft Beer", "description": "Rotating Wisconsin taps — ask your server.", "price": "6" },
-        { "name": "House Red / White", "description": "Italian table wine by the glass.", "price": "9" },
-        { "name": "Old Fashioned", "description": "Wisconsin-style, brandy, muddled cherry + orange.", "price": "11" },
-        { "name": "Negroni", "description": "Gin, Campari, sweet vermouth, orange twist.", "price": "12" }
+        { "name": "4 piece", "price": "3.25" },
+        { "name": "4 piece with cheese", "price": "4.25" },
+        { "name": "8 piece", "price": "5.25" },
+        { "name": "8 piece with cheese", "price": "7.75" },
+        { "name": "Side of marinara", "price": "0.75" }
+      ]
+    },
+    {
+      "id": "soup",
+      "title": "Soup & Chili",
+      "priceLabels": ["Cup", "Bowl"],
+      "items": [
+        { "name": "Soup", "prices": ["3.25", "5.25"] },
+        { "name": "Chili", "prices": ["3.75", "6.50"] }
+      ]
+    },
+    {
+      "id": "baskets",
+      "title": "Dinner Baskets",
+      "blurb": "Baskets include fresh coleslaw and your choice of French fries, onion rings, potato salad, or cottage cheese.",
+      "items": [
+        {
+          "name": "Walleye Fingers",
+          "note": "with tartar",
+          "price": "13.50"
+        },
+        {
+          "name": "Chicken Tenders",
+          "note": "with your choice of sauce",
+          "price": "11.00"
+        }
       ]
     }
   ]

@@ -1,8 +1,24 @@
 ---
 import menu from '../data/menu.json';
 
-type Item = { name: string; description: string; price: string };
-type Section = { id: string; title: string; blurb?: string; items: Item[] };
+type PriceTier = { label: string; price: string };
+type Item = {
+  name: string;
+  description?: string;
+  note?: string;
+  price?: string;
+  prices?: string[];
+  tiers?: PriceTier[];
+};
+type Section = {
+  id: string;
+  title: string;
+  eyebrow?: string;
+  blurb?: string;
+  priceLabels?: string[];
+  items: Item[];
+  footer?: string;
+};
 
 const sections = menu.sections as Section[];
 ---
@@ -15,24 +31,56 @@ const sections = menu.sections as Section[];
       {sections.map((section) => (
         <div class="menu-section" id={section.id}>
           <header class="menu-section__header">
+            {section.eyebrow && <p class="menu-section__eyebrow">{section.eyebrow}</p>}
             <h3 class="menu-section__title">{section.title}</h3>
             {section.blurb && <p class="menu-section__blurb">{section.blurb}</p>}
           </header>
 
-          <ul class="menu-section__items">
+          <ul class={`menu-section__items ${section.priceLabels ? 'menu-section__items--tiered' : ''}`}>
             {section.items.map((item) => (
               <li class="menu-item">
                 <div class="menu-item__head">
                   <span class="menu-item__name">{item.name}</span>
-                  <span class="menu-item__dots" aria-hidden="true"></span>
-                  <span class="menu-item__price">${item.price}</span>
+                  {!section.priceLabels && !item.tiers && item.price && (
+                    <>
+                      <span class="menu-item__dots" aria-hidden="true"></span>
+                      <span class="menu-item__price">${item.price}</span>
+                    </>
+                  )}
                 </div>
+
+                {item.note && <p class="menu-item__note">{item.note}</p>}
+
+                {section.priceLabels && item.prices && (
+                  <dl class="menu-item__tiers" aria-label={`${item.name} prices`}>
+                    {section.priceLabels.map((label, i) => (
+                      <div class="menu-item__tier">
+                        <dt>{label}</dt>
+                        <dd>${item.prices![i]}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                )}
+
+                {item.tiers && (
+                  <dl class="menu-item__tiers" aria-label={`${item.name} prices`}>
+                    {item.tiers.map((tier) => (
+                      <div class="menu-item__tier">
+                        <dt>{tier.label}</dt>
+                        <dd>${tier.price}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                )}
+
                 {item.description && (
                   <p class="menu-item__desc">{item.description}</p>
                 )}
               </li>
             ))}
           </ul>
+
+          {section.footer && <p class="menu-section__footer">{section.footer}</p>}
         </div>
       ))}
     </div>
