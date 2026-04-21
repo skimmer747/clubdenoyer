@@ -249,22 +249,12 @@ h1, h2, h3 {
 /* ---------- Section scaffolding ---------- */
 
 section { padding: clamp(4rem, 8vw, 7rem) var(--gutter); }
-.about__inner,
 .menu__inner,
 .gallery__inner,
 .visit__inner,
 .footer__inner {
   max-width: var(--container);
   margin: 0 auto;
-}
-
-/* ---------- About ---------- */
-
-.about { background: var(--cream-soft); }
-.about__body {
-  font-size: clamp(1.1rem, 1.8vw, 1.3rem);
-  max-width: 42ch;
-  color: var(--charcoal-soft);
 }
 
 /* ---------- Menu ---------- */
