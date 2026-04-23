@@ -69,6 +69,7 @@ const sections = menu.sections as Section[];
                   <li class="menu-item">
                     <div class="menu-item__head">
                       <span class="menu-item__name">{item.name}</span>
+                      {item.note && <span class="menu-item__note">{item.note}</span>}
                       {!section.priceLabels && !item.tiers && item.price && (
                         <>
                           <span class="menu-item__dots" aria-hidden="true"></span>
@@ -76,8 +77,6 @@ const sections = menu.sections as Section[];
                         </>
                       )}
                     </div>
-
-                    {item.note && <p class="menu-item__note">{item.note}</p>}
 
                     {section.priceLabels && item.prices && (
                       <dl class="menu-item__tiers" aria-label={`${item.name} prices`}>

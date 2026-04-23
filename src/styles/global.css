@@ -395,7 +395,8 @@ section { padding: clamp(4rem, 8vw, 7rem) var(--gutter); }
 
 .menu-item { padding: 0.5rem 0; border-bottom: 1px dashed var(--rule); }
 .menu-item__head {
-  display: flex; align-items: baseline; gap: 0.6rem;
+  display: flex; flex-wrap: wrap; align-items: baseline;
+  gap: 0.15rem 0.6rem;
   font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 500;
@@ -403,6 +404,7 @@ section { padding: clamp(4rem, 8vw, 7rem) var(--gutter); }
 .menu-item__name { flex: 0 0 auto; }
 .menu-item__dots {
   flex: 1 1 auto;
+  min-width: 1.5rem;
   border-bottom: 1px dotted rgba(26,22,20,0.35);
   transform: translateY(-4px);
 }
@@ -413,8 +415,10 @@ section { padding: clamp(4rem, 8vw, 7rem) var(--gutter); }
   font-weight: 700;
 }
 .menu-item__note {
-  margin: 0.15rem 0 0;
+  flex: 0 1 auto;
+  font-family: var(--font-body);
   font-size: 0.85rem;
+  font-weight: 400;
   color: var(--charcoal-soft);
   letter-spacing: 0.01em;
 }
