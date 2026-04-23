@@ -78,6 +78,10 @@ const sections = menu.sections as Section[];
                       )}
                     </div>
 
+                    {item.description && (
+                      <p class="menu-item__desc">{item.description}</p>
+                    )}
+
                     {section.priceLabels && item.prices && (
                       <dl class="menu-item__tiers" aria-label={`${item.name} prices`}>
                         {section.priceLabels.map((label, i) => (
@@ -98,10 +102,6 @@ const sections = menu.sections as Section[];
                           </div>
                         ))}
                       </dl>
-                    )}
-
-                    {item.description && (
-                      <p class="menu-item__desc">{item.description}</p>
                     )}
                   </li>
                 ))}
