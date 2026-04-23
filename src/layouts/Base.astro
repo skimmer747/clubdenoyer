@@ -18,6 +18,9 @@ const pageTitle = title === site.name ? `${site.name} — ${site.tagline}` : `${
 const canonical = new URL(Astro.url.pathname, site.url).toString();
 const ogImage = new URL(image, site.url).toString();
 
+const analyticsId = site.analyticsId;
+const loadAnalytics = import.meta.env.PROD && !!analyticsId;
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Restaurant',
@@ -84,6 +87,18 @@ const jsonLd = {
     />
 
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    {loadAnalytics && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${analyticsId}`}></script>
+        <script is:inline define:vars={{ analyticsId }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', analyticsId);
+        </script>
+      </>
+    )}
   </head>
   <body>
     <slot />

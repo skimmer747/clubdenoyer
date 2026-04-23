@@ -4,6 +4,7 @@ export const site = {
   description:
     'Club Denoyer is a pizza restaurant and bar in Eagle River, Wisconsin. Hand-tossed wood-fired pizzas, Italian-leaning starters, and a Northwoods bar.',
   url: 'https://clubdenoyer.com',
+  analyticsId: 'G-Y5JYND7BF7',
   email: 'hello@clubdenoyer.com',
   phone: {
     display: '(715) 479-4120',
@@ -23,15 +24,14 @@ export const site = {
   mapsUrl:
     'https://www.google.com/maps/search/?api=1&query=5324+WI-70%2C+Eagle+River%2C+WI+54521',
   hours: [
-    { label: 'Mon – Thu', time: '4:00 – 10:00 PM' },
-    { label: 'Fri – Sat', time: '4:00 PM – Midnight' },
-    { label: 'Sunday',    time: '3:00 – 9:00 PM' },
+    { label: 'Wed – Sat', time: '4:00 – 10:00 PM' },
+    { label: 'Sunday',    time: '4:00 – 8:00 PM' },
+    { label: 'Mon – Tue', time: 'Closed' },
   ],
   // schema.org openingHoursSpecification
   openingHours: [
-    { days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], opens: '16:00', closes: '22:00' },
-    { days: ['Friday', 'Saturday'], opens: '16:00', closes: '00:00' },
-    { days: ['Sunday'], opens: '15:00', closes: '21:00' },
+    { days: ['Wednesday', 'Thursday', 'Friday', 'Saturday'], opens: '16:00', closes: '22:00' },
+    { days: ['Sunday'], opens: '16:00', closes: '20:00' },
   ],
   social: {
     instagram: '',

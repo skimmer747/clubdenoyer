@@ -463,7 +463,11 @@ section { padding: clamp(4rem, 8vw, 7rem) var(--gutter); }
 .hours__row { display: flex; justify-content: space-between; gap: 1rem; padding: 0.35rem 0; border-bottom: 1px dashed var(--rule); }
 .hours__row:last-child { border-bottom: 0; }
 .hours dt { font-weight: 500; }
-.hours dd { margin: 0; color: var(--charcoal-soft); }
+.hours dd {
+  margin: 0;
+  color: var(--charcoal-soft);
+  white-space: nowrap;
+}
 
 .visit__address { font-style: normal; margin: 0 0 0.9rem; line-height: 1.5; }
 .visit__address a { text-decoration: none; }
