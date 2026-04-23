@@ -22,7 +22,12 @@ Hover MX). Hosted on GitHub Pages from `main` via the workflow in
   Used by `Base.astro` (JSON-LD + meta) and the `Visit`/`Nav`/`Hero`/`Footer` components.
 - `src/data/menu.json` — the menu. Edit to update content; UI re-renders on
   build. Schema (full types in `MenuSection.astro`):
-  - Section: `{ id, title, eyebrow?, blurb?, priceLabels?, items, footer? }`
+  - Section: `{ id, title, eyebrow?, blurb?, priceLabels?, items?, groups?, footer? }`
+    - Use `items` for a flat list (the default for most sections).
+    - Use `groups: [{ title?, items }]` to split a section into labeled
+      sub-groups. A group without `title` renders flush under the section
+      header; a group with `title` gets a small uppercase sub-heading
+      (used by the pizza section to break out "Specialty pizzas").
   - Item: `{ name, description?, note?, price? | prices? | tiers? }` —
     - `price`: single string (leader-dot row).
     - `prices`: array matching `section.priceLabels` (pizza Sm/Med/Lg, wings,
@@ -30,11 +35,11 @@ Hover MX). Hosted on GitHub Pages from `main` via the workflow in
     - `tiers`: item-specific `[{ label, price }]` — for the odd Sm/Lg item
       inside an otherwise single-price section (e.g. Brew City Fries).
     - `note`: small aside under the name (portion size, sauce, quantity).
-  - `section.footer` renders as an italic note (used for the pizza
-    toppings builder list).
+  - `section.footer` renders as an italic note below all groups (used for
+    the pizza toppings builder list).
 - `src/layouts/Base.astro` — `<head>`: title, meta description, OpenGraph/Twitter,
   canonical, theme-color, and the `schema.org/Restaurant` JSON-LD block.
-- `src/components/` — presentational components (`Nav`, `Hero`, `About`,
+- `src/components/` — presentational components (`Nav`, `Hero`,
   `MenuSection`, `Gallery`, `Visit`, `Footer`).
 - `src/pages/index.astro` — assembles the single-page layout.
 - `src/styles/global.css` — palette tokens (`--brand-red`, `--cream`, etc.) and all styles.

@@ -295,6 +295,15 @@ section { padding: clamp(4rem, 8vw, 7rem) var(--gutter); }
   font-style: italic;
   max-width: 70ch;
 }
+.menu-section__subheading {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin: 1.75rem 0 0.75rem;
+}
 
 .menu-section__items {
   list-style: none; padding: 0; margin: 0;

@@ -10,13 +10,15 @@ type Item = {
   prices?: string[];
   tiers?: PriceTier[];
 };
+type Group = { title?: string; items: Item[] };
 type Section = {
   id: string;
   title: string;
   eyebrow?: string;
   blurb?: string;
   priceLabels?: string[];
-  items: Item[];
+  items?: Item[];
+  groups?: Group[];
   footer?: string;
 };
 
@@ -28,7 +30,9 @@ const sections = menu.sections as Section[];
     <h2 class="section__title">What we're cooking.</h2>
 
     <div class="menu__sections">
-      {sections.map((section) => (
+      {sections.map((section) => {
+        const groups: Group[] = section.groups ?? [{ items: section.items ?? [] }];
+        return (
         <div class="menu-section" id={section.id}>
           <header class="menu-section__header">
             {section.eyebrow && <p class="menu-section__eyebrow">{section.eyebrow}</p>}
@@ -36,53 +40,59 @@ const sections = menu.sections as Section[];
             {section.blurb && <p class="menu-section__blurb">{section.blurb}</p>}
           </header>
 
-          <ul class={`menu-section__items ${section.priceLabels ? 'menu-section__items--tiered' : ''}`}>
-            {section.items.map((item) => (
-              <li class="menu-item">
-                <div class="menu-item__head">
-                  <span class="menu-item__name">{item.name}</span>
-                  {!section.priceLabels && !item.tiers && item.price && (
-                    <>
-                      <span class="menu-item__dots" aria-hidden="true"></span>
-                      <span class="menu-item__price">${item.price}</span>
-                    </>
-                  )}
-                </div>
+          {groups.map((group) => (
+            <>
+              {group.title && <h4 class="menu-section__subheading">{group.title}</h4>}
+              <ul class={`menu-section__items ${section.priceLabels ? 'menu-section__items--tiered' : ''}`}>
+                {group.items.map((item) => (
+                  <li class="menu-item">
+                    <div class="menu-item__head">
+                      <span class="menu-item__name">{item.name}</span>
+                      {!section.priceLabels && !item.tiers && item.price && (
+                        <>
+                          <span class="menu-item__dots" aria-hidden="true"></span>
+                          <span class="menu-item__price">${item.price}</span>
+                        </>
+                      )}
+                    </div>
 
-                {item.note && <p class="menu-item__note">{item.note}</p>}
+                    {item.note && <p class="menu-item__note">{item.note}</p>}
 
-                {section.priceLabels && item.prices && (
-                  <dl class="menu-item__tiers" aria-label={`${item.name} prices`}>
-                    {section.priceLabels.map((label, i) => (
-                      <div class="menu-item__tier">
-                        <dt>{label}</dt>
-                        <dd>${item.prices![i]}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                )}
+                    {section.priceLabels && item.prices && (
+                      <dl class="menu-item__tiers" aria-label={`${item.name} prices`}>
+                        {section.priceLabels.map((label, i) => (
+                          <div class="menu-item__tier">
+                            <dt>{label}</dt>
+                            <dd>${item.prices![i]}</dd>
+                          </div>
+                        ))}
+                      </dl>
+                    )}
 
-                {item.tiers && (
-                  <dl class="menu-item__tiers" aria-label={`${item.name} prices`}>
-                    {item.tiers.map((tier) => (
-                      <div class="menu-item__tier">
-                        <dt>{tier.label}</dt>
-                        <dd>${tier.price}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                )}
+                    {item.tiers && (
+                      <dl class="menu-item__tiers" aria-label={`${item.name} prices`}>
+                        {item.tiers.map((tier) => (
+                          <div class="menu-item__tier">
+                            <dt>{tier.label}</dt>
+                            <dd>${tier.price}</dd>
+                          </div>
+                        ))}
+                      </dl>
+                    )}
 
-                {item.description && (
-                  <p class="menu-item__desc">{item.description}</p>
-                )}
-              </li>
-            ))}
-          </ul>
+                    {item.description && (
+                      <p class="menu-item__desc">{item.description}</p>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </>
+          ))}
 
           {section.footer && <p class="menu-section__footer">{section.footer}</p>}
         </div>
-      ))}
+        );
+      })}
     </div>
 
     <p class="menu__note">

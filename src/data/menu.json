@@ -6,44 +6,53 @@
       "eyebrow": "Thin & crispy crust",
       "blurb": "The Nagy family has been making homemade pizzas here at Club Denoyer for over 75 years. We make our own dough and roll your pizza when you order it — topped with homemade sauce, freshly grated 100% whole-milk mozzarella, and our own seasoned pork sausage.",
       "priceLabels": ["Sm 10\"", "Med 12\"", "Lg 14\""],
-      "items": [
+      "groups": [
         {
-          "name": "Cheese Pizza",
-          "prices": ["10.00", "14.00", "18.00"]
+          "items": [
+            {
+              "name": "Cheese Pizza",
+              "prices": ["10.00", "14.00", "18.00"]
+            },
+            {
+              "name": "With One Topping",
+              "prices": ["11.00", "15.50", "20.00"]
+            },
+            {
+              "name": "Additional Toppings",
+              "note": "½ or whole pizza, each",
+              "prices": ["0.50", "1.00", "1.50"]
+            }
+          ]
         },
         {
-          "name": "With One Topping",
-          "prices": ["11.00", "15.50", "20.00"]
-        },
-        {
-          "name": "Additional Toppings",
-          "note": "½ or whole pizza, each",
-          "prices": ["0.50", "1.00", "1.50"]
-        },
-        {
-          "name": "Cheesy Garlic Pizza",
-          "description": "Crispy cheese pizza topped with garlic pepper seasoning.",
-          "prices": ["10.00", "14.00", "18.00"]
-        },
-        {
-          "name": "House Special",
-          "description": "Sausage, mushroom, green pepper, onion, black olive.",
-          "prices": ["12.50", "18.50", "24.50"]
-        },
-        {
-          "name": "Veggie Special",
-          "description": "Mushroom, onion, green pepper, tomato, black olive, green olive, jalapeño (optional).",
-          "prices": ["12.50", "18.50", "24.50"]
-        },
-        {
-          "name": "Meaty Special",
-          "description": "Sausage, pepperoni, Canadian bacon, bacon.",
-          "prices": ["12.50", "18.50", "24.50"]
-        },
-        {
-          "name": "Hawaiian Special",
-          "description": "Canadian bacon, pineapple, onion, black olive.",
-          "prices": ["12.50", "18.50", "24.50"]
+          "title": "Specialty pizzas",
+          "items": [
+            {
+              "name": "Cheesy Garlic Pizza",
+              "description": "Crispy cheese pizza topped with garlic pepper seasoning.",
+              "prices": ["10.00", "14.00", "18.00"]
+            },
+            {
+              "name": "House Special",
+              "description": "Sausage, mushroom, green pepper, onion, black olive.",
+              "prices": ["12.50", "18.50", "24.50"]
+            },
+            {
+              "name": "Veggie Special",
+              "description": "Mushroom, onion, green pepper, tomato, black olive, green olive, jalapeño (optional).",
+              "prices": ["12.50", "18.50", "24.50"]
+            },
+            {
+              "name": "Meaty Special",
+              "description": "Sausage, pepperoni, Canadian bacon, bacon.",
+              "prices": ["12.50", "18.50", "24.50"]
+            },
+            {
+              "name": "Hawaiian Special",
+              "description": "Canadian bacon, pineapple, onion, black olive.",
+              "prices": ["12.50", "18.50", "24.50"]
+            }
+          ]
         }
       ],
       "footer": "Build your own: sausage, pepperoni, chicken, hamburger, onion, tomato, pineapple, spinach, green pepper, black olive, bacon, green olive, mushroom, jalapeño, scrambled egg, sauerkraut, Canadian bacon, peperoncini, extra sauce, extra cheese."
