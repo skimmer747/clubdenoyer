@@ -1,6 +1,6 @@
 export const site = {
   name: 'Club Denoyer',
-  tagline: 'Wood-fired pizza & bar · Eagle River, Wisconsin',
+  tagline: '“Real” homemade pizza & bar · Eagle River, Wisconsin',
   description:
     'Club Denoyer is a pizza restaurant and bar in Eagle River, Wisconsin. Hand-tossed wood-fired pizzas, Italian-leaning starters, and a Northwoods bar.',
   url: 'https://clubdenoyer.com',

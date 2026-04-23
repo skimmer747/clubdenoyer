@@ -2,9 +2,9 @@
   "sections": [
     {
       "id": "pizza",
-      "title": "Real Homemade Pizza",
+      "title": "\"Real\" Homemade Pizza",
       "eyebrow": "Thin & crispy crust",
-      "blurb": "The Nagy family has been making homemade pizzas here at Club Denoyer for over 75 years. We make our own dough and roll your pizza when you order it — topped with homemade sauce, freshly grated 100% whole-milk mozzarella, and our own seasoned pork sausage.",
+      "blurb": "The Nagy family has been making homemade pizzas here at Club Denoyer for over 75 years now. We make our own dough and roll your pizza when you order it. It is then topped with our homemade sauce and freshly grated 100% whole milk Mozzarella cheese. Our sausage is made from fresh ground pork with our own combination of high quality seasonings.",
       "priceLabels": ["Sm 10\"", "Med 12\"", "Lg 14\""],
       "groups": [
         {
