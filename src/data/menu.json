@@ -5,6 +5,31 @@
       "title": "\"Real\" Homemade Pizza",
       "eyebrow": "Thin & crispy crust",
       "blurb": "The Nagy family has been making homemade pizzas here at Club Denoyer for over 75 years now. We make our own dough and roll your pizza when you order it. It is then topped with our homemade sauce and freshly grated 100% whole milk Mozzarella cheese. Our sausage is made from fresh ground pork with our own combination of high quality seasonings.",
+      "callout": {
+        "title": "Build your own",
+        "toppings": [
+          "sausage",
+          "pepperoni",
+          "chicken",
+          "hamburger",
+          "onion",
+          "tomato",
+          "pineapple",
+          "spinach",
+          "green pepper",
+          "black olive",
+          "bacon",
+          "green olive",
+          "mushroom",
+          "jalapeño",
+          "scrambled egg",
+          "sauerkraut",
+          "Canadian bacon",
+          "peperoncini",
+          "extra sauce",
+          "extra cheese"
+        ]
+      },
       "priceLabels": ["Sm 10\"", "Med 12\"", "Lg 14\""],
       "groups": [
         {
@@ -54,8 +79,7 @@
             }
           ]
         }
-      ],
-      "footer": "Build your own: sausage, pepperoni, chicken, hamburger, onion, tomato, pineapple, spinach, green pepper, black olive, bacon, green olive, mushroom, jalapeño, scrambled egg, sauerkraut, Canadian bacon, peperoncini, extra sauce, extra cheese."
+      ]
     },
     {
       "id": "appetizers",
@@ -70,11 +94,6 @@
           ]
         },
         {
-          "name": "Garlic Fries",
-          "note": "Large",
-          "price": "7.00"
-        },
-        {
           "name": "Onion Rings",
           "note": "with ranch",
           "tiers": [
@@ -83,13 +102,13 @@
           ]
         },
         {
-          "name": "Chicken Tenders",
-          "note": "Qty 4, with your choice of sauce",
-          "price": "9.00"
+          "name": "Garlic Fries",
+          "note": "Large",
+          "price": "7.00"
         },
         {
-          "name": "Cheeseburger Bites",
-          "note": "8 oz, with ranch",
+          "name": "Chicken Tenders",
+          "note": "Qty 4, with your choice of sauce",
           "price": "9.00"
         },
         {

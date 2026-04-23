@@ -11,6 +11,7 @@ type Item = {
   tiers?: PriceTier[];
 };
 type Group = { title?: string; items: Item[] };
+type Callout = { title: string; toppings: string[] };
 type Section = {
   id: string;
   title: string;
@@ -19,6 +20,8 @@ type Section = {
   priceLabels?: string[];
   items?: Item[];
   groups?: Group[];
+  /** Highlight block shown after the section blurb (e.g. build-your-own toppings). */
+  callout?: Callout;
   footer?: string;
 };
 
@@ -39,6 +42,24 @@ const sections = menu.sections as Section[];
             <h3 class="menu-section__title">{section.title}</h3>
             {section.blurb && <p class="menu-section__blurb">{section.blurb}</p>}
           </header>
+
+          {section.callout && (
+            <aside
+              class="menu-section__callout"
+              aria-label={`${section.callout.title}: available toppings`}
+            >
+              <div class="menu-callout__inner">
+                <h4 class="menu-callout__title">{section.callout.title}</h4>
+                <ul class="menu-callout__chips" role="list">
+                  {section.callout.toppings.map((t) => (
+                    <li>
+                      <span class="menu-callout__chip">{t}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </aside>
+          )}
 
           {groups.map((group) => (
             <>

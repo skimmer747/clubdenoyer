@@ -44,6 +44,7 @@ html {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+  .menu-callout__chip:hover { transform: none; }
 }
 
 body {
@@ -288,6 +289,83 @@ section { padding: clamp(4rem, 8vw, 7rem) var(--gutter); }
   margin: 0;
   max-width: 62ch;
 }
+
+/* Build-your-own (or similar) highlight — sits under the blurb, above menu rows */
+.menu-section__callout {
+  margin: 1.35rem 0 1.5rem;
+  max-width: 72ch;
+}
+.menu-callout__inner {
+  position: relative;
+  padding: 1.15rem 1.2rem 1.2rem 1.35rem;
+  background: linear-gradient(
+    145deg,
+    var(--cream-soft) 0%,
+    rgba(251, 246, 236, 0.92) 48%,
+    rgba(246, 239, 228, 0.65) 100%
+  );
+  border: 1px solid var(--rule);
+  border-radius: calc(var(--radius) + 2px);
+  box-shadow: var(--shadow-lift);
+  border-left: 4px solid var(--ember);
+  overflow: hidden;
+}
+/* Soft corner glow so the card feels a bit more “special” than body copy */
+.menu-callout__inner::before {
+  content: '';
+  position: absolute;
+  inset: -40% 55% auto -20%;
+  height: 140%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(217, 122, 42, 0.12) 0%,
+    transparent 65%
+  );
+  pointer-events: none;
+}
+.menu-callout__title {
+  position: relative;
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+  font-weight: 700;
+  color: var(--brand-red);
+  margin: 0 0 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.menu-callout__chips {
+  position: relative;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.5rem;
+}
+.menu-callout__chips li { margin: 0; }
+.menu-callout__chip {
+  display: inline-block;
+  padding: 0.32rem 0.7rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--charcoal-soft);
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(107, 74, 43, 0.28);
+  border-radius: 999px;
+  line-height: 1.2;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.65) inset;
+  transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .menu-callout__chip:hover {
+    border-color: rgba(138, 28, 28, 0.45);
+    box-shadow: 0 2px 8px -3px rgba(26, 22, 20, 0.2);
+    transform: translateY(-1px);
+  }
+}
+
 .menu-section__footer {
   margin-top: 1.25rem;
   font-size: 0.9rem;
