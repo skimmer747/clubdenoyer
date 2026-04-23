@@ -190,6 +190,10 @@ h1, h2, h3 {
   .nav__cta { border: 0; padding: 1rem var(--gutter); border-top: 1px solid rgba(246,239,228,0.08); }
 }
 
+@media (max-width: 380px) {
+  .section__eyebrow { letter-spacing: 0.12em; }
+}
+
 /* ---------- Hero ---------- */
 
 .hero {
@@ -386,11 +390,11 @@ section { padding: clamp(4rem, 8vw, 7rem) var(--gutter); }
 .menu-section__items {
   list-style: none; padding: 0; margin: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
   gap: 1.25rem 2.5rem;
 }
 .menu-section__items--tiered {
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
 }
 
 .menu-item { padding: 0.5rem 0; border-bottom: 1px dashed var(--rule); }
@@ -401,7 +405,7 @@ section { padding: clamp(4rem, 8vw, 7rem) var(--gutter); }
   font-size: 1.1rem;
   font-weight: 500;
 }
-.menu-item__name { flex: 0 0 auto; }
+.menu-item__name { flex: 0 1 auto; min-width: 0; }
 .menu-item__dots {
   flex: 1 1 auto;
   min-width: 1.5rem;
@@ -522,7 +526,7 @@ section { padding: clamp(4rem, 8vw, 7rem) var(--gutter); }
 .visit { background: var(--cream-soft); }
 .visit__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
   gap: 1.5rem;
   margin-top: 2rem;
 }
@@ -548,7 +552,6 @@ section { padding: clamp(4rem, 8vw, 7rem) var(--gutter); }
 .hours dd {
   margin: 0;
   color: var(--charcoal-soft);
-  white-space: nowrap;
 }
 
 .visit__address { font-style: normal; margin: 0 0 0.9rem; line-height: 1.5; }
