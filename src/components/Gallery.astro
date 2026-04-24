@@ -1,19 +1,32 @@
 ---
-// TODO: once photos land in src/assets/, import them and replace the
-// placeholder tiles with <Image src={...} alt={...} /> from astro:assets.
-// Example:
-//   import { Image } from 'astro:assets';
-//   import pizza from '../assets/pizza-margherita.jpg';
-//   <Image src={pizza} alt="Margherita pizza" widths={[400, 800, 1200]} sizes="(max-width: 720px) 100vw, 33vw" />
+// Gallery tiles: optional `src` + `alt` use astro:assets <Image>; others stay gradient placeholders.
+import { Image } from 'astro:assets';
+import houseSpecial from '../assets/House Special with pepperoni.jpg';
+import chickenWings from '../assets/Chicken Wings.jpg';
 
-const placeholders = [
-  { label: 'Wood-fired pizza',   tone: 'warm'   },
-  { label: 'The bar',            tone: 'amber'  },
-  { label: 'Dining room',        tone: 'cream'  },
-  { label: 'Fresh dough',        tone: 'olive'  },
-  { label: 'Old Fashioned',      tone: 'rust'   },
-  { label: 'Northwoods evening', tone: 'smoke'  },
-];
+/** Widths passed to <Image> so Astro can generate srcset for sharp screens. */
+const photoWidths = [400, 800, 1200] as const;
+/** Rough column width in the responsive grid (matches minmax ~260px + breakpoints). */
+const photoSizes = '(max-width: 720px) 100vw, 33vw';
+
+const tiles = [
+  {
+    label: 'House Special with Pepperoni',
+    tone: 'warm',
+    src: houseSpecial,
+    alt: 'House Special with Pepperoni at Club Denoyer',
+  },
+  {
+    label: 'Chicken Wings',
+    tone: 'amber',
+    src: chickenWings,
+    alt: 'Chicken wings at Club Denoyer',
+  },
+  { label: 'Dining room', tone: 'cream' },
+  { label: 'Fresh dough', tone: 'olive' },
+  { label: 'Old Fashioned', tone: 'rust' },
+  { label: 'Northwoods evening', tone: 'smoke' },
+] as const;
 ---
 <section class="gallery" id="gallery">
   <div class="gallery__inner">
@@ -21,15 +34,24 @@ const placeholders = [
     <h2 class="section__title">The room, the food, the vibe.</h2>
 
     <div class="gallery__grid">
-      {placeholders.map((p) => (
+      {tiles.map((p) => (
         <figure class={`gallery__tile gallery__tile--${p.tone}`}>
+          {'src' in p && p.src ? (
+            <Image
+              class="gallery__photo"
+              src={p.src}
+              alt={p.alt}
+              widths={[...photoWidths]}
+              sizes={photoSizes}
+            />
+          ) : null}
           <figcaption class="gallery__caption">{p.label}</figcaption>
         </figure>
       ))}
     </div>
 
     <p class="gallery__note">
-      Photos coming soon — drop them into <code>src/assets/</code> and we'll wire them up.
+      More photos coming soon — drop files into <code>src/assets/</code> and we will wire them up like the house special.
     </p>
   </div>
 </section>
