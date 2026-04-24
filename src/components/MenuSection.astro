@@ -1,5 +1,15 @@
 ---
+import { Image, type ImageMetadata } from 'astro:assets';
 import menu from '../data/menu.json';
+import chickenWings from '../assets/Chicken Wings.jpg';
+
+/**
+ * Maps menu.json `backgroundImage` keys to imported assets so Astro can optimize them.
+ * If menu.json references a key that is missing here, we throw — no silent wrong image.
+ */
+const sectionBackgrounds: Record<string, ImageMetadata> = {
+  wings: chickenWings,
+};
 
 type PriceTier = { label: string; price: string };
 type Item = {
@@ -23,6 +33,8 @@ type Section = {
   /** Highlight block shown after the section blurb (e.g. build-your-own toppings). */
   callout?: Callout;
   footer?: string;
+  /** Key into `sectionBackgrounds` for a dimmed decorative section background. */
+  backgroundImage?: string;
 };
 
 const sections = menu.sections as Section[];
@@ -35,81 +47,117 @@ const sections = menu.sections as Section[];
     <div class="menu__sections">
       {sections.map((section) => {
         const groups: Group[] = section.groups ?? [{ items: section.items ?? [] }];
-        return (
-        <div class="menu-section" id={section.id}>
-          <header class="menu-section__header">
-            {section.eyebrow && <p class="menu-section__eyebrow">{section.eyebrow}</p>}
-            <h3 class="menu-section__title">{section.title}</h3>
-            {section.blurb && <p class="menu-section__blurb">{section.blurb}</p>}
-          </header>
 
-          {section.callout && (
-            <aside
-              class="menu-section__callout"
-              aria-label={`${section.callout.title}: available toppings`}
-            >
-              <div class="menu-callout__inner">
-                <h4 class="menu-callout__title">{section.callout.title}</h4>
-                <ul class="menu-callout__chips" role="list">
-                  {section.callout.toppings.map((t) => (
-                    <li>
-                      <span class="menu-callout__chip">{t}</span>
+        const bgKey = section.backgroundImage;
+        let bgSrc: ImageMetadata | undefined;
+        if (bgKey != null && bgKey !== '') {
+          const resolved = sectionBackgrounds[bgKey];
+          if (resolved === undefined) {
+            throw new Error(`Unknown section background "${bgKey}"`);
+          }
+          bgSrc = resolved;
+        }
+
+        const sectionBody = (
+          <>
+            <header class="menu-section__header">
+              {section.eyebrow && <p class="menu-section__eyebrow">{section.eyebrow}</p>}
+              <h3 class="menu-section__title">{section.title}</h3>
+              {section.blurb && <p class="menu-section__blurb">{section.blurb}</p>}
+            </header>
+
+            {section.callout && (
+              <aside
+                class="menu-section__callout"
+                aria-label={`${section.callout.title}: available toppings`}
+              >
+                <div class="menu-callout__inner">
+                  <h4 class="menu-callout__title">{section.callout.title}</h4>
+                  <ul class="menu-callout__chips" role="list">
+                    {section.callout.toppings.map((t) => (
+                      <li>
+                        <span class="menu-callout__chip">{t}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </aside>
+            )}
+
+            {groups.map((group) => (
+              <>
+                {group.title && <h4 class="menu-section__subheading">{group.title}</h4>}
+                <ul class={`menu-section__items ${section.priceLabels ? 'menu-section__items--tiered' : ''}`}>
+                  {group.items.map((item) => (
+                    <li class="menu-item">
+                      <div class="menu-item__head">
+                        <span class="menu-item__name">{item.name}</span>
+                        {item.note && <span class="menu-item__note">{item.note}</span>}
+                        {!section.priceLabels && !item.tiers && item.price && (
+                          <>
+                            <span class="menu-item__dots" aria-hidden="true"></span>
+                            <span class="menu-item__price">${item.price}</span>
+                          </>
+                        )}
+                      </div>
+
+                      {item.description && (
+                        <p class="menu-item__desc">{item.description}</p>
+                      )}
+
+                      {section.priceLabels && item.prices && (
+                        <dl class="menu-item__tiers" aria-label={`${item.name} prices`}>
+                          {section.priceLabels.map((label, i) => (
+                            <div class="menu-item__tier">
+                              <dt>{label}</dt>
+                              <dd>${item.prices![i]}</dd>
+                            </div>
+                          ))}
+                        </dl>
+                      )}
+
+                      {item.tiers && (
+                        <dl class="menu-item__tiers" aria-label={`${item.name} prices`}>
+                          {item.tiers.map((tier) => (
+                            <div class="menu-item__tier">
+                              <dt>{tier.label}</dt>
+                              <dd>${tier.price}</dd>
+                            </div>
+                          ))}
+                        </dl>
+                      )}
                     </li>
                   ))}
                 </ul>
-              </div>
-            </aside>
-          )}
+              </>
+            ))}
 
-          {groups.map((group) => (
+            {section.footer && <p class="menu-section__footer">{section.footer}</p>}
+          </>
+        );
+
+        return (
+        <div
+          class={`menu-section${bgSrc ? ' menu-section--has-bg' : ''}`}
+          id={section.id}
+        >
+          {bgSrc ? (
             <>
-              {group.title && <h4 class="menu-section__subheading">{group.title}</h4>}
-              <ul class={`menu-section__items ${section.priceLabels ? 'menu-section__items--tiered' : ''}`}>
-                {group.items.map((item) => (
-                  <li class="menu-item">
-                    <div class="menu-item__head">
-                      <span class="menu-item__name">{item.name}</span>
-                      {item.note && <span class="menu-item__note">{item.note}</span>}
-                      {!section.priceLabels && !item.tiers && item.price && (
-                        <>
-                          <span class="menu-item__dots" aria-hidden="true"></span>
-                          <span class="menu-item__price">${item.price}</span>
-                        </>
-                      )}
-                    </div>
-
-                    {item.description && (
-                      <p class="menu-item__desc">{item.description}</p>
-                    )}
-
-                    {section.priceLabels && item.prices && (
-                      <dl class="menu-item__tiers" aria-label={`${item.name} prices`}>
-                        {section.priceLabels.map((label, i) => (
-                          <div class="menu-item__tier">
-                            <dt>{label}</dt>
-                            <dd>${item.prices![i]}</dd>
-                          </div>
-                        ))}
-                      </dl>
-                    )}
-
-                    {item.tiers && (
-                      <dl class="menu-item__tiers" aria-label={`${item.name} prices`}>
-                        {item.tiers.map((tier) => (
-                          <div class="menu-item__tier">
-                            <dt>{tier.label}</dt>
-                            <dd>${tier.price}</dd>
-                          </div>
-                        ))}
-                      </dl>
-                    )}
-                  </li>
-                ))}
-              </ul>
+              <div class="menu-section__bg" aria-hidden="true">
+                <Image
+                  class="menu-section__bg-img"
+                  src={bgSrc}
+                  alt=""
+                  widths={[600, 1000, 1600]}
+                  sizes="(max-width: 720px) 100vw, 1000px"
+                />
+                <div class="menu-section__bg-overlay"></div>
+              </div>
+              <div class="menu-section__content">{sectionBody}</div>
             </>
-          ))}
-
-          {section.footer && <p class="menu-section__footer">{section.footer}</p>}
+          ) : (
+            sectionBody
+          )}
         </div>
         );
       })}

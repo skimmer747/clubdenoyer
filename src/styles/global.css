@@ -506,6 +506,49 @@ section { padding: clamp(4rem, 8vw, 7rem) var(--gutter); }
   max-width: 48ch;
 }
 
+/* Optional dimmed photo behind a menu section (e.g. wings) — cream overlay keeps type readable */
+.menu-section--has-bg {
+  position: relative;
+  isolation: isolate;
+  padding: clamp(1.5rem, 3vw, 2.25rem) clamp(1.25rem, 3vw, 2rem);
+  border-radius: calc(var(--radius) + 4px);
+  overflow: hidden;
+  box-shadow: var(--shadow-lift);
+}
+.menu-section__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+}
+.menu-section__bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.95) contrast(0.95);
+}
+/* Cream wash: denser at the header so the title stays crisp, lighter below
+   the midline so the wings are clearly visible behind the tier cards. */
+.menu-section__bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(246, 239, 228, 0.82) 0%,
+    rgba(246, 239, 228, 0.62) 40%,
+    rgba(246, 239, 228, 0.48) 100%
+  );
+}
+.menu-section__content {
+  position: relative;
+  z-index: 1;
+}
+.menu-section--has-bg .menu-item__tier {
+  background: rgba(255, 255, 255, 0.72);
+  border-color: rgba(107, 74, 43, 0.28);
+}
+
 .menu__note {
   margin-top: 2.5rem;
   text-align: center;

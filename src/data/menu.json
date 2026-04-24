@@ -161,6 +161,7 @@
     {
       "id": "wings",
       "title": "Breaded Chicken Wings",
+      "backgroundImage": "wings",
       "priceLabels": ["Small", "Medium", "Large"],
       "items": [
         {
