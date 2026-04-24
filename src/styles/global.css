@@ -526,18 +526,17 @@ section { padding: clamp(4rem, 8vw, 7rem) var(--gutter); }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: saturate(0.95) contrast(0.95);
 }
-/* Cream wash: denser at the header so the title stays crisp, lighter below
-   the midline so the wings are clearly visible behind the tier cards. */
+/* Light cream wash: just enough to unify the section with the page palette;
+   per-row text is already protected by the menu-item__head pill. */
 .menu-section__bg-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(246, 239, 228, 0.82) 0%,
-    rgba(246, 239, 228, 0.62) 40%,
-    rgba(246, 239, 228, 0.48) 100%
+    rgba(246, 239, 228, 0.55) 0%,
+    rgba(246, 239, 228, 0.3) 45%,
+    rgba(246, 239, 228, 0.18) 100%
   );
 }
 .menu-section__content {
