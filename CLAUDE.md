@@ -13,7 +13,7 @@ Hover MX). Hosted on GitHub Pages from `main` via the workflow in
 
 - **Astro** (minimal template, TypeScript strict) — static site, no frameworks.
 - Hand-written CSS in `src/styles/global.css` (no Sass, no Tailwind).
-- Google Fonts via `<link>`: Playfair Display (display) + Inter (body).
+- Google Fonts via `<link>`: Fraunces (display) + Inter (body).
 - `astro:assets` `<Image>` for any real photos once they land in `src/assets/`.
 
 ## Where things live

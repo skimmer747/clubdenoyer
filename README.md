@@ -6,7 +6,7 @@ Lives at [clubdenoyer.com](https://clubdenoyer.com).
 ## Stack
 
 - [Astro](https://astro.build) (minimal, static output)
-- Plain CSS, Google Fonts (Playfair Display + Inter)
+- Plain CSS, Google Fonts (Fraunces + Inter)
 - Deployed to GitHub Pages via GitHub Actions
 
 ## Run it locally
