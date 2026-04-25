@@ -438,6 +438,13 @@ section { padding: clamp(4rem, 8vw, 7rem) var(--gutter); }
 }
 
 .menu-item { padding: 0.5rem 0; border-bottom: 1px dashed var(--rule); }
+.menu-item--featured {
+  padding: 0.75rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
+}
 .menu-item__head {
   display: flex; flex-wrap: wrap; align-items: baseline;
   gap: 0.15rem 0.6rem;
@@ -504,6 +511,24 @@ section { padding: clamp(4rem, 8vw, 7rem) var(--gutter); }
   font-size: 0.95rem;
   color: var(--charcoal-soft);
   max-width: 48ch;
+}
+.menu-item__figure {
+  margin: 0 0 0.75rem;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--rule);
+}
+.menu-item__photo {
+  display: block;
+  width: 100%;
+  height: clamp(180px, 22vw, 220px);
+  object-fit: cover;
+}
+.menu-item--featured .menu-item__desc {
+  max-width: none;
+}
+.menu-item--featured .menu-item__tiers {
+  margin-top: 0.65rem;
 }
 
 /* Optional dimmed photo behind a menu section (e.g. wings) — cream overlay keeps type readable */

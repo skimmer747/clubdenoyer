@@ -70,7 +70,8 @@
             {
               "name": "Meaty Special",
               "description": "Sausage, pepperoni, Canadian bacon, bacon.",
-              "prices": ["12.50", "18.50", "24.50"]
+              "prices": ["12.50", "18.50", "24.50"],
+              "image": "meatlovers"
             },
             {
               "name": "Hawaiian Special",

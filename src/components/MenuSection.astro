@@ -2,6 +2,7 @@
 import { Image, type ImageMetadata } from 'astro:assets';
 import menu from '../data/menu.json';
 import chickenWings from '../assets/Chicken Wings.jpg';
+import meatloversPizza from '../assets/Meatlovers.png';
 
 /**
  * Maps menu.json `backgroundImage` keys to imported assets so Astro can optimize them.
@@ -9,6 +10,9 @@ import chickenWings from '../assets/Chicken Wings.jpg';
  */
 const sectionBackgrounds: Record<string, ImageMetadata> = {
   wings: chickenWings,
+};
+const itemImages: Record<string, ImageMetadata> = {
+  meatlovers: meatloversPizza,
 };
 
 type PriceTier = { label: string; price: string };
@@ -19,6 +23,7 @@ type Item = {
   price?: string;
   prices?: string[];
   tiers?: PriceTier[];
+  image?: string;
 };
 type Group = { title?: string; items: Item[] };
 type Callout = { title: string; toppings: string[] };
@@ -88,8 +93,29 @@ const sections = menu.sections as Section[];
               <>
                 {group.title && <h4 class="menu-section__subheading">{group.title}</h4>}
                 <ul class={`menu-section__items ${section.priceLabels ? 'menu-section__items--tiered' : ''}`}>
-                  {group.items.map((item) => (
-                    <li class="menu-item">
+                  {group.items.map((item) => {
+                    let itemSrc: ImageMetadata | undefined;
+                    if (item.image != null && item.image !== '') {
+                      const resolved = itemImages[item.image];
+                      if (resolved === undefined) {
+                        throw new Error(`Unknown menu item image "${item.image}"`);
+                      }
+                      itemSrc = resolved;
+                    }
+
+                    return (
+                    <li class={`menu-item${itemSrc ? ' menu-item--featured' : ''}`}>
+                      {itemSrc && (
+                        <figure class="menu-item__figure">
+                          <Image
+                            class="menu-item__photo"
+                            src={itemSrc}
+                            alt={`${item.name} at Club Denoyer`}
+                            widths={[400, 800, 1200]}
+                            sizes="(max-width: 720px) 100vw, 360px"
+                          />
+                        </figure>
+                      )}
                       <div class="menu-item__head">
                         <span class="menu-item__name">{item.name}</span>
                         {item.note && <span class="menu-item__note">{item.note}</span>}
@@ -127,7 +153,8 @@ const sections = menu.sections as Section[];
                         </dl>
                       )}
                     </li>
-                  ))}
+                    );
+                  })}
                 </ul>
               </>
             ))}
