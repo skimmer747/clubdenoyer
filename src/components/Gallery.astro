@@ -5,6 +5,7 @@ import vegetableSpecial from '../assets/House Special with pepperoni.jpg';
 import chickenWings from '../assets/Chicken Wings.jpg';
 import meatloversPizza from '../assets/Meatlovers.png';
 import eggOnPizza from '../assets/Eggsonpizza.png';
+import pizzaBuffet from '../assets/PizzaBuffet.png';
 
 /** Widths passed to <Image> so Astro can generate srcset for sharp screens. */
 const photoWidths = [400, 800, 1200] as const;
@@ -36,7 +37,12 @@ const tiles = [
     src: eggOnPizza,
     alt: 'Eggs on pizza at Club Denoyer',
   },
-  { label: 'Old Fashioned', tone: 'rust' },
+  {
+    label: 'Pizza buffet',
+    tone: 'rust',
+    src: pizzaBuffet,
+    alt: 'Pizza buffet at Club Denoyer',
+  },
   { label: 'Northwoods evening', tone: 'smoke' },
 ] as const;
 ---
@@ -49,13 +55,25 @@ const tiles = [
       {tiles.map((p) => (
         <figure class={`gallery__tile gallery__tile--${p.tone}`}>
           {'src' in p && p.src ? (
-            <Image
-              class="gallery__photo"
-              src={p.src}
-              alt={p.alt}
-              widths={[...photoWidths]}
-              sizes={photoSizes}
-            />
+            <>
+              <Image
+                class="gallery__photo"
+                src={p.src}
+                alt={p.alt}
+                widths={[...photoWidths]}
+                sizes={photoSizes}
+              />
+              <button
+                class="gallery__tile-trigger"
+                type="button"
+                aria-haspopup="dialog"
+                data-full={p.src.src}
+                data-caption={p.label}
+                data-alt={p.alt}
+              >
+                <span class="sr-only">{`Enlarge: ${p.label}`}</span>
+              </button>
+            </>
           ) : null}
           <figcaption class="gallery__caption">{p.label}</figcaption>
         </figure>
@@ -66,4 +84,62 @@ const tiles = [
       More photos coming soon — drop files into <code>src/assets/</code> and we will wire them up like the example photos.
     </p>
   </div>
+
+  <dialog class="gallery__lightbox" aria-labelledby="gallery-lightbox-caption">
+    <button class="gallery__lightbox-close" type="button" aria-label="Close">×</button>
+    <img class="gallery__lightbox-img" alt="" />
+    <p class="gallery__lightbox-caption" id="gallery-lightbox-caption"></p>
+  </dialog>
 </section>
+
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>('.gallery__lightbox');
+  if (dialog) {
+    const img = dialog.querySelector<HTMLImageElement>('.gallery__lightbox-img')!;
+    const caption = dialog.querySelector<HTMLParagraphElement>('.gallery__lightbox-caption')!;
+    const CLOSING = 'gallery__lightbox--closing';
+
+    function populate(btn: HTMLElement) {
+      img.src = btn.dataset.full ?? '';
+      img.alt = btn.dataset.alt ?? '';
+      caption.textContent = btn.dataset.caption ?? '';
+    }
+
+    function openLightbox(btn: HTMLElement) {
+      populate(btn);
+      dialog!.showModal();
+    }
+
+    function closeLightbox() {
+      if (!dialog!.open || dialog!.classList.contains(CLOSING)) return;
+      dialog!.classList.add(CLOSING);
+      let done = false;
+      const finish = () => {
+        if (done) return;
+        done = true;
+        dialog!.classList.remove(CLOSING);
+        dialog!.close();
+      };
+      dialog!.addEventListener('animationend', function onEnd(e) {
+        // Only the dialog's own animation — not children — signals close.
+        if (e.target !== dialog) return;
+        dialog!.removeEventListener('animationend', onEnd);
+        finish();
+      });
+      // Safety net: prefers-reduced-motion runs animations in 0.01ms,
+      // and we don't want a missed event to leave the dialog stuck open.
+      setTimeout(finish, 500);
+    }
+
+    document.querySelectorAll<HTMLButtonElement>('.gallery__tile-trigger').forEach((btn) => {
+      btn.addEventListener('click', () => openLightbox(btn));
+    });
+    // Tap anywhere — image, caption, backdrop, or × — closes. The close button
+    // bubbles up to this handler, so no separate listener needed.
+    dialog.addEventListener('click', closeLightbox);
+    dialog.addEventListener('cancel', (e) => {
+      e.preventDefault();
+      closeLightbox();
+    });
+  }
+</script>
