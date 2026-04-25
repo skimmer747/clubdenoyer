@@ -652,6 +652,18 @@ section { padding: clamp(4rem, 8vw, 7rem) var(--gutter); }
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset;
 }
 
+/* For single-price sections with a background photo (e.g. garlic bread),
+   stack pills in one column sized to the widest item so all pills are
+   the same width. Tiered sections (wings) keep their multi-column grid. */
+.menu-section--has-bg .menu-section__items:not(.menu-section__items--tiered) {
+  grid-template-columns: max-content;
+  justify-content: start;
+}
+.menu-section--has-bg .menu-section__items:not(.menu-section__items--tiered) .menu-item__head {
+  display: flex;
+  width: 100%;
+}
+
 .menu__note {
   margin-top: 2.5rem;
   text-align: center;

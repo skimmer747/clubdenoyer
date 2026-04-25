@@ -2,6 +2,7 @@
 import { Image, type ImageMetadata } from 'astro:assets';
 import menu from '../data/menu.json';
 import chickenWings from '../assets/Chicken Wings.jpg';
+import garlicBreadCheese from '../assets/GarlicBreadCheese.png';
 import meatloversPizza from '../assets/Meatlovers.png';
 
 /**
@@ -10,6 +11,7 @@ import meatloversPizza from '../assets/Meatlovers.png';
  */
 const sectionBackgrounds: Record<string, ImageMetadata> = {
   wings: chickenWings,
+  'garlic-bread': garlicBreadCheese,
 };
 const itemImages: Record<string, ImageMetadata> = {
   meatlovers: meatloversPizza,

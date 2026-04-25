@@ -185,6 +185,7 @@
     {
       "id": "garlic-bread",
       "title": "Garlic Bread",
+      "backgroundImage": "garlic-bread",
       "items": [
         { "name": "4 piece", "price": "3.25" },
         { "name": "4 piece with cheese", "price": "4.25" },
