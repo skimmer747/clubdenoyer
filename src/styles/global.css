@@ -45,6 +45,14 @@ html {
     transition-duration: 0.01ms !important;
   }
   .menu-callout__chip:hover { transform: none; }
+  .gallery__tile:hover,
+  .gallery__tile:hover .gallery__photo,
+  .menu-item__tier:hover,
+  .visit__card:hover,
+  .menu-item--featured:hover .menu-item__photo,
+  .hero__scroll:hover span { transform: none; }
+  .menu-item:hover::before { transform: scaleY(0); }
+  .nav__links a:hover::after { transform: scaleX(0); }
   .hero__backdrop img { animation: none !important; object-position: 50% 50%; transform: scale(1); }
 }
 
@@ -158,8 +166,24 @@ h1, h2, h3 {
   display: flex; align-items: center; gap: 1.6rem;
   font-size: 0.95rem; font-weight: 500;
 }
-.nav__links a { text-decoration: none; color: inherit; }
+.nav__links a {
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  transition: color 180ms ease;
+}
+.nav__links a::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -4px;
+  height: 1.5px;
+  background: var(--ember);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 220ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
 .nav__links a:hover { color: var(--ember); }
+.nav__links a:hover::after { transform: scaleX(1); }
 .nav__cta {
   border: 1px solid currentColor;
   padding: 0.45rem 0.8rem;
@@ -188,6 +212,7 @@ h1, h2, h3 {
   }
   .nav__links--open { max-height: 60vh; }
   .nav__links a { padding: 1rem var(--gutter); width: 100%; border-top: 1px solid rgba(246,239,228,0.08); }
+  .nav__links a::after { content: none; }
   .nav__cta { border: 0; padding: 1rem var(--gutter); border-top: 1px solid rgba(246,239,228,0.08); }
 }
 
@@ -285,7 +310,14 @@ h1, h2, h3 {
   color: rgba(246,239,228,0.65); text-decoration: none;
   font-size: 1.3rem;
   animation: hero-bounce 2.4s ease-in-out infinite;
+  transition: color 180ms ease;
 }
+.hero__scroll span {
+  display: inline-block;
+  transition: transform 180ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.hero__scroll:hover { color: var(--cream); }
+.hero__scroll:hover span { transform: scale(1.2); }
 @keyframes hero-bounce {
   0%, 100% { transform: translate(-50%, 0); }
   50% { transform: translate(-50%, 6px); }
@@ -437,13 +469,37 @@ section { padding: clamp(4rem, 8vw, 7rem) var(--gutter); }
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
 }
 
-.menu-item { padding: 0.5rem 0; border-bottom: 1px dashed var(--rule); }
+.menu-item {
+  padding: 0.5rem 0 0.5rem 0.75rem;
+  border-bottom: 1px dashed var(--rule);
+  position: relative;
+  transition: background-color 180ms ease;
+}
+.menu-item::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0.35rem; bottom: 0.35rem;
+  width: 2px;
+  background: var(--brand-red);
+  transform: scaleY(0);
+  transform-origin: top center;
+  transition: transform 220ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.menu-item:hover { background-color: rgba(138, 28, 28, 0.04); }
+.menu-item:hover::before { transform: scaleY(1); }
 .menu-item--featured {
   padding: 0.75rem;
   border: 1px solid var(--rule);
   border-radius: var(--radius);
   background: rgba(255, 255, 255, 0.55);
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
+  transition: background-color 180ms ease, border-color 180ms ease, box-shadow 220ms ease;
+}
+.menu-item--featured::before { left: 0; top: 0.6rem; bottom: 0.6rem; }
+.menu-item--featured:hover {
+  background-color: rgba(255, 255, 255, 0.78);
+  border-color: rgba(138, 28, 28, 0.25);
+  box-shadow: var(--shadow-lift);
 }
 .menu-item__head {
   display: flex; flex-wrap: wrap; align-items: baseline;
@@ -489,6 +545,12 @@ section { padding: clamp(4rem, 8vw, 7rem) var(--gutter); }
   border: 1px solid var(--rule);
   border-radius: var(--radius);
   background: rgba(255, 255, 255, 0.4);
+  transition: transform 180ms cubic-bezier(0.2, 0.7, 0.2, 1), border-color 180ms ease, background-color 180ms ease;
+}
+.menu-item__tier:hover {
+  transform: translateY(-1px);
+  border-color: var(--brand-red);
+  background-color: rgba(138, 28, 28, 0.06);
 }
 .menu-item__tier dt {
   font-size: 0.7rem;
@@ -523,7 +585,9 @@ section { padding: clamp(4rem, 8vw, 7rem) var(--gutter); }
   width: 100%;
   height: clamp(180px, 22vw, 220px);
   object-fit: cover;
+  transition: transform 320ms cubic-bezier(0.2, 0.7, 0.2, 1);
 }
+.menu-item--featured:hover .menu-item__photo { transform: scale(1.03); }
 .menu-item--featured .menu-item__desc {
   max-width: none;
 }
@@ -572,6 +636,10 @@ section { padding: clamp(4rem, 8vw, 7rem) var(--gutter); }
   background: rgba(255, 255, 255, 0.72);
   border-color: rgba(107, 74, 43, 0.28);
 }
+.menu-section--has-bg .menu-item__tier:hover {
+  background: rgba(255, 244, 233, 0.92);
+  border-color: var(--brand-red);
+}
 
 /* Variant 3: subtle cream pill behind just the item name + qty note. */
 .menu-section--has-bg .menu-item__head {
@@ -610,6 +678,11 @@ section { padding: clamp(4rem, 8vw, 7rem) var(--gutter); }
   overflow: hidden;
   box-shadow: var(--shadow-lift);
   background: #2a1e18;
+  transition: transform 220ms cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 220ms ease;
+}
+.gallery__tile:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px -14px rgba(26, 22, 20, 0.5);
 }
 .gallery__tile--warm  { background: linear-gradient(135deg, #8a1c1c, #d97a2a); }
 .gallery__tile--amber { background: linear-gradient(135deg, #6b4a2b, #d97a2a); }
@@ -626,7 +699,9 @@ section { padding: clamp(4rem, 8vw, 7rem) var(--gutter); }
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 320ms cubic-bezier(0.2, 0.7, 0.2, 1);
 }
+.gallery__tile:hover .gallery__photo { transform: scale(1.04); }
 .gallery__caption {
   position: absolute; inset: auto 0 0 0;
   z-index: 1;
@@ -635,6 +710,10 @@ section { padding: clamp(4rem, 8vw, 7rem) var(--gutter); }
   font-family: var(--font-display);
   font-style: italic;
   font-size: 1.05rem;
+  transition: background 220ms ease;
+}
+.gallery__tile:hover .gallery__caption {
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.68));
 }
 .gallery__note {
   margin-top: 2rem;
@@ -663,6 +742,12 @@ section { padding: clamp(4rem, 8vw, 7rem) var(--gutter); }
   padding: 1.75rem 1.5rem;
   border-radius: var(--radius);
   border: 1px solid var(--rule);
+  transition: transform 220ms cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 220ms ease, border-color 220ms ease;
+}
+.visit__card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lift);
+  border-color: rgba(138, 28, 28, 0.35);
 }
 .visit__card-title {
   font-size: 1.15rem;
