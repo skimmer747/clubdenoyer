@@ -3,6 +3,8 @@
 import { Image } from 'astro:assets';
 import vegetableSpecial from '../assets/House Special with pepperoni.jpg';
 import chickenWings from '../assets/Chicken Wings.jpg';
+import meatloversPizza from '../assets/Meatlovers.png';
+import eggOnPizza from '../assets/Eggsonpizza.png';
 
 /** Widths passed to <Image> so Astro can generate srcset for sharp screens. */
 const photoWidths = [400, 800, 1200] as const;
@@ -22,8 +24,18 @@ const tiles = [
     src: chickenWings,
     alt: 'Chicken wings at Club Denoyer',
   },
-  { label: 'Dining room', tone: 'cream' },
-  { label: 'Fresh dough', tone: 'olive' },
+  {
+    label: 'Meatlovers pizza',
+    tone: 'cream',
+    src: meatloversPizza,
+    alt: 'Meatlovers pizza at Club Denoyer',
+  },
+  {
+    label: 'Eggs on pizza',
+    tone: 'olive',
+    src: eggOnPizza,
+    alt: 'Eggs on pizza at Club Denoyer',
+  },
   { label: 'Old Fashioned', tone: 'rust' },
   { label: 'Northwoods evening', tone: 'smoke' },
 ] as const;
