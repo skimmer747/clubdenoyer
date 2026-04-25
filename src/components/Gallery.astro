@@ -1,7 +1,7 @@
 ---
 // Gallery tiles: optional `src` + `alt` use astro:assets <Image>; others stay gradient placeholders.
 import { Image } from 'astro:assets';
-import houseSpecial from '../assets/House Special with pepperoni.jpg';
+import vegetableSpecial from '../assets/House Special with pepperoni.jpg';
 import chickenWings from '../assets/Chicken Wings.jpg';
 
 /** Widths passed to <Image> so Astro can generate srcset for sharp screens. */
@@ -11,10 +11,10 @@ const photoSizes = '(max-width: 720px) 100vw, 33vw';
 
 const tiles = [
   {
-    label: 'House Special with Pepperoni',
+    label: 'Vegetable Special with Pepperoni',
     tone: 'warm',
-    src: houseSpecial,
-    alt: 'House Special with Pepperoni at Club Denoyer',
+    src: vegetableSpecial,
+    alt: 'Vegetable Special with Pepperoni at Club Denoyer',
   },
   {
     label: 'Chicken Wings',
@@ -51,7 +51,7 @@ const tiles = [
     </div>
 
     <p class="gallery__note">
-      More photos coming soon — drop files into <code>src/assets/</code> and we will wire them up like the house special.
+      More photos coming soon — drop files into <code>src/assets/</code> and we will wire them up like the example photos.
     </p>
   </div>
 </section>
